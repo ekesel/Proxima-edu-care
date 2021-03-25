@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<section class="section coming-soon" data-section="section3">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+    <div class="right-content">
+      <div class="top-content">
+        <h6><em>Register</em> with Proxima Care</h6>
+        {% if messages %}
+        {% for message in messages %}
+          <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength:2000});</script>
+        {% endfor %}
+        {% endif %}
+      </div>
+      <form id="contact" action="" method="POST">
+        {% csrf_token %}  
+        <div class="row">
+          <div class="col-md-12">
+            <fieldset>
+              <input name="username" type="text" class="form-control" id="username" placeholder="Your Name" required>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <input name="email" type="email" class="form-control" id="email" placeholder="Your Email" required>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <input name="password1" type="password" class="form-control" id="password1" placeholder="Your Password" required>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <input name="password2" type="password" class="form-control" id="password2" placeholder="Enter Password Again" required>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+          <input type="radio" id="is_student" name="usertype" value="is_student">
+          <label for="is_student"><h3 style="color:rgb(247, 247, 247);">Student</h3></label><br>
+          <input type="radio" id="is_tutor" name="usertype" value="is_tutor">
+          <label for="is_tutor"><h3 style="color:rgb(247, 247, 247);">Tutor</h3></label><br>
+          <input type="radio" id="is_school" name="usertype" value="is_school">
+          <label for="is_school"><h3 style="color:rgb(247, 247, 247);">School</h3></label> 
+          <input type="radio" id="is_institute" name="usertype" value="is_institute">
+          <label for="is_institute"><h3 style="color:rgb(247, 247, 247);">Institute</h3></label> 
+          <input type="radio" id="is_owner" name="usertype" value="is_owner">
+          <label for="is_owner"><h3 style="color:rgb(247, 247, 247);">Owner(Renting a Space)</h3></label><br>
+          <input type="radio" id="is_seller" name="usertype" value="is_seller">
+          <label for="is_seller"><h3 style="color:rgb(247, 247, 247);">Seller(exp. Books)</h3></label> 
+          <input type="radio" id="is_college" name="usertype" value="is_college">
+          <label for="is_seller"><h3 style="color:rgb(247, 247, 247);">College</h3></label> 
+          </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <button type="submit" id="form-submit" class="button">Register Now</button>
+            </fieldset>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+{% endblock body %}

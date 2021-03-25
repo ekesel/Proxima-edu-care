@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<section class="section coming-soon" data-section="section3">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+    <div class="right-content">
+      <div class="top-content">
+        <h6>Register for a Tutor<em> and get listed in Azamgarh Tutor List!</em></h6>
+        {% if messages %}
+        {% for message in messages %}
+          <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength:2000});</script>
+        {% endfor %}
+        {% endif %}
+      </div>
+      <form id="contact" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}  
+        <div class="row">
+          <div class="col-md-12">
+            <fieldset>
+              <input name="name" type="text" class="form-control" id="name" placeholder="Your Name" required>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <input name="email" type="email" class="form-control" id="email" placeholder="Your Email" required>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <input name="mobno" type="tel" class="form-control" id="mobno" placeholder="Your Phone Number" required>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <input name="subject" type="text" class="form-control" id="subject" placeholder="Enter subjects with a comma that you are going to teach" required>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <input name="hours" type="number" class="form-control" id="hours" placeholder="No. of hours you are going to teach in a day" required>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <input name="days" type="number" class="form-control" id="days" placeholder="No. of days you are going to teach in a week" required>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <input name="price" type="number" class="form-control" id="price" placeholder="Enter price according to that" required>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <input name="myfile" type="file" class="form-control" id="myfile" required>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset class="top-content">
+              <h6>Please send a small demo video of you teaching to admin on 7007013502 (WhatsApp, Telegram) for Verification. Video will be added to your profile after verification.</h6>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <button type="submit" id="form-submit" class="button">Register Now</button>
+            </fieldset>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+{% endblock body %}

@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+  <section class="features">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-12">
+          <div class="features-post">
+            <div class="features-content">
+              <div class="content-show">
+                <h4><i class="fa fa-pencil"></i>Popular Courses</h4>
+              </div>
+              <div class="content-hide">
+                <p>Check out All the Popular Courses which people are taking in Azamgarh. Learn Together and Improve Together!</p>
+                <p class="hidden-sm">earn Together and Improve Together!</p>
+                <div class="scroll-to-section"><a href="#section3">More Info.</a></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12">
+          <div class="features-post second-features">
+            <div class="features-content">
+              <div class="content-show">
+                <h4><i class="fa fa-graduation-cap"></i>Trending Tutors</h4>
+              </div>
+              <div class="content-hide">
+                <p>Ever wondered who's the top tutor in the city? Check out top tutors in the city and learn from them!</p>
+                <p class="hidden-sm">Check out top tutors in the city and learn from them!</p>
+                <div class="scroll-to-section"><a href="#section2">Check here</a></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12">
+          <div class="features-post third-features">
+            <div class="features-content">
+              <div class="content-show">
+                <h4><i class="fa fa-book"></i>Best School?</h4>
+              </div>
+              <div class="content-hide">
+                <p>Send your child to the top school in Azamgarh. Check out the top five schools in Azamgarh.</p>
+                <p class="hidden-sm">Check out the top five schools in Azamgarh.</p>
+                <div class="scroll-to-section"><a href="#section4">Click here</a></div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section courses" data-section="section2">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Trending Tutors</h2>
+          </div>
+        </div>
+        <div class="owl-carousel owl-theme">
+          {% for tutor in tutordata %}
+        <div class="item">
+          <img src="{{tutor.image}}" alt="Tutor">
+          <a href="{% url 'profiletutor' tutor.id %}">
+          <div class="down-content">
+            <h4>{{tutor.name}}</h4>
+            <p>Subject: {{tutor.subject}} <br>Days per Week:{{tutor.days}} <br>Hours per day: {{tutor.hours}}</p>
+            
+            <div class="author-image">
+              <img src="{% static 'assets/images/tutor.png' %}" alt="tutor">
+            </div>
+            <div class="text-button-pay">
+              <a href="#">Book: {{tutor.price}}<i class="fa fa-angle-double-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </a>
+        {% endfor %}
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section coming-soon" data-section="section3">
+    <div class="container">
+      <div class="row">
+        {% for mostview in mostviewed %}
+        <div class="col-md-7 col-xs-12">
+          <div class="continer centerIt">
+            <div>
+              <h4>Take the <em>Most Viewed Course</em> on our website!
+                <br>
+                Name: <em>{{mostview.name}}</em> <br>
+                Price: {{mostview.price}} <br>
+                <br>
+                {{mostview.overview}}
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="right-content">
+            <div class="top-content">
+              <img src="{{mostview.image.url}}" alt="Course" width="500" height="500">
+              </div>
+              </div>
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+  </section>
+
+  <section class="section courses" data-section="section4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Popular Schools</h2>
+          </div>
+        </div>
+        <div class="owl-carousel owl-theme">
+           {% for school in schools %}
+          <div class="item">
+            <img src="{{school.image}}" alt="School">
+            <a href="{% url 'profileschool' school.id %}">
+            <div class="down-content">
+              <h4>{{school.name}}</h4>
+              <p>Location: {{school.location}} <br>Board:{{school.board}} <br>Medium: {{school.name}}</p>
+              <div class="author-image">
+                <img src="{% static 'assets/images/teacher.png' %}" alt="Author 1">
+              </div>
+              <div class="text-button-pay">
+                <a href="{% url 'profileschool' school.id %}">Know More <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="section coming-soon" data-section="section3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 col-xs-12">
+          <div class="continer centerIt">
+            <div>
+              <h4>Take <em>the Cheapest book available </em> and keep the reading worm in you alive :) <br> <br>
+              {{minbook}} <br>
+              <em> Rs. {{minprice}} </em><br>
+              <span>{{minoverview}}</span></h4>
+            </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  <section class="section courses" data-section="section4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Most Searched Institutes!</h2>
+          </div>
+        </div>
+        <div class="owl-carousel owl-theme">
+           {% for institute in institutes %}
+          <div class="item">
+            <img src="{{institute.image}}" alt="Institute">
+            <a href="{% url 'profileinstitute' institute.id %}">
+            <div class="down-content">
+              <h4>{{institute.name}}</h4>
+              <p>Location: {{institute.location}} <br>Majorly for:{{institute.major}} <br>Courses available: {{institute.courses}}</p>
+              <div class="author-image">
+                <img src="{% static 'assets/images/teacher.png' %}" alt="Author 1">
+              </div>
+              <div class="text-button-pay">
+                <a href="{% url 'profileinstitute' institute.id %}">Know More <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section coming-soon" data-section="section3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 col-xs-12">
+          <div class="continer centerIt">
+            <div>
+              <h4>Take <em>the Cheapest Educational Room available </em> and keep teaching your students! :) <br> <br>
+              {{minlocation}} <br>
+              <em> Rs. {{mincharge}} </em><br>
+              <span>{{minequip}}</span></h4>
+            </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="section courses" data-section="section4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Most Viewed Colleges!</h2>
+          </div>
+        </div>
+        <div class="owl-carousel owl-theme">
+           {% for college in colleges %}
+          <div class="item">
+            <img src="{{college.image}}" alt="College">
+            <a href="{% url 'profilecollege' college.id %}">
+            <div class="down-content">
+              <h4>{{college.name}}</h4>
+              <p>Location: {{college.location}} <br>Majors: {{college.major}} <br>Lumpsum Fees: {{college.fees}}</p>
+              <div class="author-image">
+                <img src="{% static 'assets/images/teacher.png' %}" alt="College 1">
+              </div>
+              <div class="text-button-pay">
+                <a href="{% url 'profilecollege' college.id %}">Know More <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock body %}

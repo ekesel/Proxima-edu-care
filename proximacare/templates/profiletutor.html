@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<section class="section video" data-section="section5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 align-self-center">
+          <div class="left-content">
+            {% if ownprofile == True %}
+              <span>Your Details</span>
+              <h4>Tutor<em> Information</em></h4>
+              <form id="contact" action="" method="POST">
+                {% csrf_token %}  
+                <div class="row">
+                  <div class="col-md-12">
+                    <fieldset>
+                      <input name="name" type="text" class="form-control" id="name" placeholder="{{obj.name}}" required>
+                      <br>
+                    </fieldset>
+                  </div>
+                  <div class="col-md-12">
+                    <fieldset>
+                      {{obj.email}}
+                    </fieldset>
+                    <br>
+                  </div>
+                  <div class="col-md-12">
+                    <fieldset>
+                      <input name="mobno" type="tel" class="form-control" id="mobno" placeholder="{{obj.mobno}}" required>
+                      <br>
+                    </fieldset>
+                  </div>
+                  <div class="col-md-12">
+                    <fieldset>
+                      <input name="subject" type="text" class="form-control" id="subject" placeholder="{{obj.subject}}" required>
+                      <br>
+                    </fieldset>
+                  </div>
+                  <div class="col-md-12">
+                    <fieldset>
+                      <input name="hours" type="number" class="form-control" id="hours" placeholder="{{obj.hours}}" required>
+                      <br>
+                    </fieldset>
+                  </div>
+                  <div class="col-md-12">
+                    <fieldset>
+                      <input name="days" type="number" class="form-control" id="days" placeholder="{{obj.days}}" required>
+                      <br>
+                    </fieldset>
+                  </div>
+                  <div class="col-md-12">
+                    <fieldset>
+                      <input name="price" type="number" class="form-control" id="price" placeholder="{{obj.price}}" required>
+                      <br>
+                    </fieldset>
+                  </div>
+                  <div class="col-md-12">
+                    <fieldset class="top-content">
+                      <br>
+                      <h6>Please send a small demo video of you teaching to admin on 7007013502 (WhatsApp, Telegram) for Verification. Video will be updated to your profile after verification. Contact Admin to Change Email.</h6>
+                    </fieldset>
+                  </div>
+                  <div class="col-md-12">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="button">Update</button>
+                    </fieldset>
+                  </div>
+                </div>
+              </form>
+              {% else %}
+              <h4>Tutor<em> Information</em></h4>
+              <h6>Name: {{obj.name}} <br> <br>
+                Price: Rs.{{obj.price}} <br> <br>
+                Mob. No. {{obj.mobno}} <br> <br>
+                Subjects : {{obj.subject}} <br> <br>
+                Email: {{obj.email}} <br> <br>
+                Teaching Days in a Week: {{obj.days}} <br> <br>
+                Teaching Hours in a Day: {{obj.hours}} <br> <br>
+                Contact the tutor from their number/email and book them for teaching! <br><br>
+                Report rude behaviour and complaints at proximacare@gmail.com</h6>
+              {% endif %}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <article class="video-item">
+            <div class="video-caption">
+              <h4>Click Play!</h4>
+            </div>
+            <figure>
+              <a href="#"><img src="{{obj.image}}"></a>
+            </figure>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock body %}

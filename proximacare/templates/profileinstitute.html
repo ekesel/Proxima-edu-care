@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<section class="section video" data-section="section5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 align-self-center">
+          <div class="left-content">
+            {% if ownprofile == True %}
+            <span>Institute Details</span>
+            <form id="contact" action="" method="POST">
+              {% csrf_token %}  
+              <div class="row">
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="name" type="text" class="form-control" id="name" placeholder="{{obj.name}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    {{obj.email}}
+                  </fieldset>
+                  <br>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="location" type="text" class="form-control" id="location" placeholder="{{obj.location}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="mobno" type="tel" class="form-control" id="mobno" placeholder="{{obj.mobno}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="major" type="text" class="form-control" id="major" placeholder="{{obj.major}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="website" type="url" class="form-control" id="website" placeholder="{{obj.website}}">
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="courses" type="text" class="form-control" id="courses" placeholder="{{obj.courses}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="years" type="number" class="form-control" id="years" placeholder="{{obj.years}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="enroll" type="number" class="form-control" id="enroll" placeholder="{{obj.enroll}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="foundername" type="text" class="form-control" id="foundername" placeholder="{{obj.foundername}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="staff" type="number" class="form-control" id="staff" placeholder="{{obj.staff}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset class="top-content">
+                    <br>
+                    <h6>Please send a small introductory video of your Institute to admin on 7007013502 (WhatsApp, Telegram) for Verification. Video will be updated to your profile after verification. Contact admin to change email.</h6>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <button type="submit" id="form-submit" class="button">Update Now</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+            {% else %}
+            <h4>Institute<em> Information</em></h4>
+            <h6>Institute Name: {{obj.name}} <br> <br>
+                Email: {{obj.email}} <br> <br>
+                Registered from: {{obj.years}} <br> <br>
+                Majorly for: {{obj.major}} <br> <br>
+                Courses Available : {{obj.courses}} <br> <br>
+                Enrolled Students: {{obj.enroll}} <br> <br>
+                Location: {{obj.location}} <br> <br>
+                Founder's Name: {{obj.foundername}} <br> <br>
+                Contact Number: {{obj.mobno}} <br> <br>
+                Website: {{obj.website}} <br> <br>
+                Staffs Hired: {{obj.staff}} <br> <br>
+                Contact the Institute from their number/email and get Enrolled! <br><br>
+                Report rude behaviour and complaints at proximacare@gmail.com</h6>
+                {% endif %}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <article class="video-item">
+            <div class="video-caption">
+              <h4>Click Play!</h4>
+            </div>
+            <figure>
+              <a href="#"><img src="{{obj.image}}"></a>
+            </figure>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock body %}

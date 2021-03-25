@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<section class="section coming-soon" data-section="section3">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-12">
+        <div class="right-content">
+          <div class="top-content">
+            <form action="{% url 'collegesearch' %}" method="get">
+                <input name="q" type="text" placeholder="Search with any of the following - Name, Location or Major">
+            </form>
+        </div>
+{% for objects in object_list %}
+<a href="{% url 'profilecollege' objects.id %}">
+<div class="row">
+    <div class="col-md-12">
+        <fieldset class="top-content">
+          <h6>Name: {{objects.name}} <br> Location: {{objects.location}} <br> Contact No: {{objects.mobno}} <br> Majors : {{objects.major}} </h6>
+        </fieldset>
+      </div>
+</div>
+</a>
+{% endfor %}
+        </div>
+        </div>
+    </div></div></section>
+{% endblock body %}

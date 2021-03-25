@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<section class="section coming-soon" data-section="section3">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-12">
+        <div class="right-content">
+          <div class="top-content">
+            <form action="{% url 'buy' %}" method="get">
+                <input name="q" type="text" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+</div>
+</div></div></section>
+<section class="section courses" data-section="section4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Check out Books Avaialble!</h2>
+          </div>
+        </div>
+        <div class="owl-carousel owl-theme">
+            {% for book in object_list %}
+          <div class="item">
+            <img src="{{book.image}}" alt="Book">
+            <a href="{% url 'profilebook' book.id %}">
+            <div class="down-content">
+              <h4>{{book.bookname}}</h4>
+              <p>Selling Price: {{book.sellprice}} <br>Original Price:{{book.orgprice}} <br>Overview: {{book.overview}}</p>
+              <div class="author-image">
+                <img src="{% static 'assets/images/teacher.png' %}" alt="Author 1">
+              </div>
+              <div class="text-button-pay">
+                <a href="{% url 'profilebook' book.id %}">Buy!<i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section coming-soon" data-section="section3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 col-xs-12">
+          <div class="continer centerIt">
+            <div>
+              <h4>Take <em>the Cheapest book available </em> and keep the reading worm in you alive :) <br> <br>
+              {{minbook}} <br>
+              <em> Rs. {{minprice}} </em><br>
+              <span>{{minoverview}}</span></h4>
+            </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  {% endblock body %}

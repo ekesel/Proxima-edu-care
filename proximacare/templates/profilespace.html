@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<section class="section video" data-section="section5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 align-self-center">
+          <div class="left-content">
+            {% if ownprofile == True %}
+            <span>Edu. Room Details</span>
+            <form id="contact" action="" method="POST">
+              {% csrf_token %}  
+              <div class="row">
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="location" type="text" class="form-control" id="location" placeholder="{{obj.location}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="rooms" type="number" class="form-control" id="rooms" placeholder="{{obj.rooms}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="equip" type="text" class="form-control" id="equip" placeholder="{{obj.equip}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="hours" type="number" class="form-control" id="hours" placeholder="{{obj.hours}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="charge" type="number" class="form-control" id="number" placeholder="{obj.charge}}">
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="sellername" type="text" class="form-control" id="sellername" placeholder="{{obj.sellername}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="sellerno" type="text" class="form-control" id="sellerno" placeholder="{{obj.sellerno}}" required>
+                    <br>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    {{obj.selleremail}}
+                  </fieldset>
+                  <br>
+                </div>
+                
+                <div class="col-md-12">
+                  <fieldset class="top-content">
+                    <br>
+                    <h6>Please send a small introductory video showing your rooms to admin on 7007013502 (WhatsApp, Telegram) for Verification. Video will be updated to your profile after verification. Contact admin to change email.</h6>
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <button type="submit" id="form-submit" class="button">Update Now</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+            {% else %}
+            <h4>Space<em> Information</em></h4>
+            <h6>Owner Name: {{obj.sellername}} <br> <br>
+                Charge Per Month: Rs.{{obj.charge}} <br> <br>
+                Contact. No. {{obj.sellerno}} <br> <br>
+                Seller email : {{obj.selleremail}} <br> <br>
+                Available Hours per Day: {{obj.hours}} <br> <br>
+                Available Rooms: {{obj.rooms}} <br> <br>
+                Equipped With : {{obj.equip}} <br> <br>
+                Contact the seller from their number/email and get the rented space! <br><br>
+                Report rude behaviour and complaints at proximacare@gmail.com</h6>
+                {% endif %}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <article class="video-item">
+            <div class="video-caption">
+              <h4>Click Play!</h4>
+            </div>
+            <figure>
+              <a href="#"><img src="{{obj.image}}"></a>
+            </figure>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock body %}
