@@ -66,12 +66,6 @@
                   </fieldset>
                 </div>
                 <div class="col-md-12">
-                  <fieldset class="top-content">
-                    <br>
-                    <h6>Please send a small introductory video of your school to admin on 7007013502 (WhatsApp, Telegram) for Verification. Video will be updated to your profile after verification. For updating Email, Contact Admin</h6>
-                  </fieldset>
-                </div>
-                <div class="col-md-12">
                   <fieldset>
                     <button type="submit" id="form-submit" class="button">Update Now</button>
                   </fieldset>
@@ -91,14 +85,15 @@
                 Website: {{obj.website}} <br> <br>
                 Enrolled Online: {{obj.enroll}} <br><br>
                 Contact the School from their number/email and get Admission! <br><br>
-                Report rude behaviour and complaints at proximacare@gmail.com</h6>
+                <a href="{% url 'contact' %}">If you feel like, Tell us and We will contact them for you </a> <br><br>
+                Report rude behaviour and complaints at complaints@proximaeducare.in</h6>
                 {% endif %}
           </div>
         </div>
         <div class="col-md-6">
           <article class="video-item">
             <div class="video-caption">
-              <h4>Click Play!</h4>
+              <h4>{{obj.name}}</h4>
             </div>
             <figure>
               <a href="#"><img src="{{obj.image}}"></a>

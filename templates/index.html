@@ -50,7 +50,68 @@
       </div>
     </div>
   </section>
+<section class="section courses" data-section="section4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Popular Schools</h2>
+          </div>
+        </div>
+        <div class="owl-carousel owl-theme">
+           {% for school in schools %}
+          <div class="item">
+            <img src="{{school.image}}" alt="School">
+            <a href="{% url 'profileschool' school.id %}">
+            <div class="down-content">
+              <h4>{{school.name}}</h4>
+              <p>Location: {{school.location}} <br>Board:{{school.board}} <br>Medium: {{school.name}}</p>
+              <div class="author-image">
+                <img src="{% static 'assets/images/teacher.png' %}" alt="Author 1">
+              </div>
+              <div class="text-button-pay">
+                <a href="{% url 'profileschool' school.id %}">Know More <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section coming-soon" data-section="section3">
+    <div class="container">
+      <div class="row">
+        {% for mostview in mostviewed %}
+        <div class="col-md-7 col-xs-12">
+          <div class="continer centerIt">
+            <div>
+              <h4>Take the <em>Most Viewed Course</em> on our website!
+                <br>
+                Name: <em>{{mostview.name}}</em> <br>
+                Price: {{mostview.price}} <br>
+                <br>
+                {{mostview.overview}}
+              </h4> <br>
+              <button class="button"><a href="{% url 'profilecourse' mostview.id %}" class="external">Click here to Know More</a></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="right-content">
+            <div class="top-content">
+              <img src="{{mostview.image.url}}" alt="Course" width="300" height="300">
+              </div>
+              </div>
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+  </section>
 
+  
   <section class="section courses" data-section="section2">
     <div class="container-fluid">
       <div class="row">
@@ -83,66 +144,6 @@
     </div>
   </section>
 
-  <section class="section coming-soon" data-section="section3">
-    <div class="container">
-      <div class="row">
-        {% for mostview in mostviewed %}
-        <div class="col-md-7 col-xs-12">
-          <div class="continer centerIt">
-            <div>
-              <h4>Take the <em>Most Viewed Course</em> on our website!
-                <br>
-                Name: <em>{{mostview.name}}</em> <br>
-                Price: {{mostview.price}} <br>
-                <br>
-                {{mostview.overview}}
-              </h4>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div class="right-content">
-            <div class="top-content">
-              <img src="{{mostview.image.url}}" alt="Course" width="500" height="500">
-              </div>
-              </div>
-        </div>
-        {%endfor%}
-      </div>
-    </div>
-  </section>
-
-  <section class="section courses" data-section="section4">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <h2>Popular Schools</h2>
-          </div>
-        </div>
-        <div class="owl-carousel owl-theme">
-           {% for school in schools %}
-          <div class="item">
-            <img src="{{school.image}}" alt="School">
-            <a href="{% url 'profileschool' school.id %}">
-            <div class="down-content">
-              <h4>{{school.name}}</h4>
-              <p>Location: {{school.location}} <br>Board:{{school.board}} <br>Medium: {{school.name}}</p>
-              <div class="author-image">
-                <img src="{% static 'assets/images/teacher.png' %}" alt="Author 1">
-              </div>
-              <div class="text-button-pay">
-                <a href="{% url 'profileschool' school.id %}">Know More <i class="fa fa-angle-double-right"></i></a>
-              </div>
-            </div>
-          </div>
-        </a>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-  </section>
-  
 
   <section class="section coming-soon" data-section="section3">
     <div class="container">
@@ -154,11 +155,19 @@
               {{minbook}} <br>
               <em> Rs. {{minprice}} </em><br>
               <span>{{minoverview}}</span></h4>
+              <br>
+              <button class="button"><a href="{% url 'buy' %}" class="external">Click here to Search for this book</a></button>
             </div>
             </div>
           </div>
+          <div class="col-md-5">
+          <div class="right-content">
+            <div class="top-content">
+              <img src="{% static 'assets/images/cheapest-book.jpg' %}" alt="Course" width="300" height="500">
+              </div>
+              </div>
         </div>
-        
+        </div>
       </div>
     </div>
   </section>
@@ -202,9 +211,18 @@
               {{minlocation}} <br>
               <em> Rs. {{mincharge}} </em><br>
               <span>{{minequip}}</span></h4>
+              <br>
+              <button class="button"><a href="{% url 'needspace' %}" class="external">Click here to search for this Space</a></button>
             </div>
             </div>
           </div>
+          <div class="col-md-5">
+          <div class="right-content">
+            <div class="top-content">
+              <img src="{% static 'assets/images/2nd.jpg' %}" alt="Course" width="300" height="500">
+              </div>
+              </div>
+        </div>
         </div>
         
       </div>

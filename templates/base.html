@@ -6,8 +6,9 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Worried about your Career in Azamgarh? We have got it covered!">
+    <meta name="description" content="Worried about Career and Education in Azamgarh? We have got it covered!">
     <meta name="author" content="Ekaansh Sahni">
+     <meta name="keywords" content="proximaeducare, proxima edu care, proxima, education, azamgarh, eduinazamgarh, institutes in azamgarh, tutors in azamgarh, teacher in azamgarh, schools in azamgarh, college in azamgarh">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
     <title>Proxima Edu Care</title>
@@ -20,7 +21,16 @@
     <link rel="stylesheet" href="{% static 'assets/css/templatemo-grad-school.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/lightbox.css' %}">
-
+    <script data-ad-client="ca-pub-1976491785760492" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4ZS9G60PSV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-4ZS9G60PSV');
+    </script>
   </head>
 
 <body>
@@ -42,17 +52,20 @@
             <li><a href="{% url 'tutorsearch' %}" class="external">Tutors</a></li>
             <li><a href="{% url 'coursesearch' %}" class="external">Courses</a></li>
             <li><a href="{% url 'collegesearch' %}" class="external">Colleges</a></li>
+            <li><a href="{% url 'needspace' %}" class="external">Need Space?</a></li>
           </ul>
         </li>
         <li class="has-submenu"><a href="#">Register</a>
-          <ul class="sub-menu">
-            <li><a href="{% url 'reg_tutor' %}" class="external">Tutor</a></li>
-            <li><a href="{% url 'reg_institute' %}" class="external">Institute</a></li>
-            <li><a href="{% url 'reg_school' %}" class="external">School</a></li>
-            <li><a href="{% url 'reg_college' %}" class="external">College</a></li>
-          </ul>
-        </li>
-        <li class="has-submenu"><a href="#">Second Hand Books</a>
+            <ul class="sub-menu">
+                <li><a href="{% url 'reg_tutor' %}" class="external">Tutor</a></li>
+                <li><a href="{% url 'reg_institute' %}" class="external">Institute</a></li>
+                <li><a href="{% url 'reg_school' %}" class="external">School</a></li>
+                <li><a href="{% url 'reg_college' %}" class="external">College</a></li>
+                <li><a href="{% url 'sharespace' %}" class="external">share Space</a></li>
+                
+                </ul>
+                </li>
+        <li class="has-submenu"><a href="#">Books</a>
           <ul class="sub-menu">
             <li><a href="{% url 'buy' %}" class="external">Buy</a></li>
             <li><a href="{% url 'sell' %}" class="external">Sell</a></li>
@@ -64,17 +77,11 @@
             <li><a href="{% url 'about' %}" class="external">About</a></li>
           </ul>
         </li>
-        <li class="has-submenu"><a href="#">Need/Give Space</a>
-          <ul class="sub-menu">
-            <li><a href="{% url 'needspace' %}" class="external">Need Space?</a></li>
-            <li><a href="{% url 'sharespace' %}" class="external">Share Space</a></li>
-          </ul>
-        </li>
         <li><a href="https://gyanism.in" class="external" target='blank'>Blogs</a></li>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'logout' %}" class="external">Logout</a></li>
-        {% else %}
-        <li><a href="{% url 'login' %}" class="external">Login</a></li>
+            <li><a href="{% url 'logout' %}" class="external">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}" class="external">Login</a></li>
         {% endif %}
       </ul>
     </nav>

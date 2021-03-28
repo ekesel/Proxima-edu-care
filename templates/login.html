@@ -7,13 +7,15 @@
 <div class="col-md-12">
     <div class="right-content">
       <div class="top-content">
-        <h6>Login <em> using your credentials</em> with Proxima Care</h6>
-        {% if messages %}
-        {% for message in messages %}
-          <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength:2000});</script>
-        {% endfor %}
-        {% endif %}
+        <h6>Login <em> using your credentials</em> with Proxima Edu Care</h6>
       </div>
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}"{% endif %}><h4 style="color:rgb(247, 247, 247); text-align:center;">{{ message }}</h4></li>
+          {% endfor %}
+          {% endif %}
+      </ul>
       <form id="contact" action="" method="POST">
         {% csrf_token %}  
         <div class="row">
@@ -31,6 +33,16 @@
           <div class="col-md-12">
             <fieldset>
               <button type="submit" id="form-submit" class="button">Login Now</button>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <button class="button"><a href="{% url 'signup' %}" class="external">Don't have an Account? Register</a></button>
+            </fieldset>
+          </div>
+          <div class="col-md-12">
+            <fieldset>
+              <button class="button"><a href="{% url 'contact' %}" class="external">Contact us right away if you forget your Password!</a></button>
             </fieldset>
           </div>
         </div>

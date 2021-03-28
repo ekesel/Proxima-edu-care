@@ -105,6 +105,8 @@ def profiletutor(request, id):
                 obj.price = request.POST.get('price')
                 obj.save()
                 return redirect(profiletutor,id)
+        else:
+            ownprofile= False
     else:
         obj.count+=1
         obj.save()
@@ -221,6 +223,8 @@ def profileschool(request, id):
                 obj.location = request.POST.get('location')
                 obj.save()
                 return redirect(profileschool,id)
+        else:
+            ownprofile= False
     else:
         obj.count+=1
         obj.save()
@@ -246,7 +250,7 @@ def sell(request):
                 image = url
                 bookname = request.POST.get('bookname')
                 selleremail = request.POST.get('selleremail')
-                sellerno = request.POST.get('selllerno')
+                sellerno = request.POST.get('sellerno')
                 sellername = request.POST.get('sellername')
                 sellprice = request.POST.get('sellprice')
                 orgprice = request.POST.get('orgprice')
@@ -311,6 +315,8 @@ def profilebook(request, id):
                 obj.overview = request.POST.get('overview')
                 obj.save()
                 return redirect(profilebook,id)
+        else:
+            ownprofile= False
     else:
         ownprofile = False
     parms = {
@@ -399,6 +405,8 @@ def profilespace(request, id):
                 obj.sellerno = request.POST.get('sellerno')
                 obj.save()
                 return redirect(profilespace, id)
+        else:
+            ownprofile= False
     else:
         ownprofile = False
     parms = {
@@ -502,6 +510,8 @@ def profileinstitute(request, id):
                 obj.staff = request.POST.get('staff')
                 obj.save()
                 return redirect(profileinstitute,id)
+        else:
+            ownprofile= False
     else:
         obj.count+=1
         obj.save()
@@ -524,49 +534,62 @@ def signup(request):
         if password1 == password2:
             if User.objects.filter(username=username).exists():
                 messages.info(request,'Username Taken')
-                return redirect('signup')
             elif User.objects.filter(email=email).exists():
                 messages.info(request,'Email Taken')
-                return redirect('signup')
             else:
                 if istype == 'is_student':
                     user = User.objects.create_user(username=username,password=password1,email=email).save()
                     extuser(email=email,is_student=True).save()
-                    messages.info(request,'User Created')
-                    return redirect(index)
+                    messages.info(request,'Student ID Created')
+                    user = auth.authenticate(username=username,password=password1)
+                    auth.login(request,user)
+                    return redirect('index')
                 elif istype == 'is_tutor':
                     user = User.objects.create_user(username=username,password=password1,email=email).save()
                     extuser(email=email,is_tutor=True).save()
-                    messages.info(request,'User Created')
+                    messages.info(request,'Tutor ID Created')
+                    user = auth.authenticate(username=username,password=password1)
+                    auth.login(request,user)
                     return redirect('reg_tutor')
                 elif istype == 'is_institute':
                     user = User.objects.create_user(username=username,password=password1,email=email).save()
                     extuser(email=email,is_institute=True).save()
-                    messages.info(request,'User Created')
+                    messages.info(request,'Institute ID Created')
+                    user = auth.authenticate(username=username,password=password1)
+                    auth.login(request,user)
                     return redirect('reg_institute')
                 elif istype == 'is_school':
                     user = User.objects.create_user(username=username,password=password1,email=email).save()
                     extuser(email=email,is_school=True).save()
-                    messages.info(request,'User Created')
+                    messages.info(request,'School ID Created')
+                    user = auth.authenticate(username=username,password=password1)
+                    auth.login(request,user)
                     return redirect('reg_school')
                 elif istype == 'is_owner':
                     user = User.objects.create_user(username=username,password=password1,email=email).save()
                     extuser(email=email,is_owner=True).save()
-                    messages.info(request,'User Created')
+                    messages.info(request,'Owner ID Created')
+                    user = auth.authenticate(username=username,password=password1)
+                    auth.login(request,user)
                     return redirect('sharespace')
                 elif istype == 'is_seller':
                     user = User.objects.create_user(username=username,password=password1,email=email).save()
                     extuser(email=email,is_seller=True).save()
-                    messages.info(request,'User Created')
+                    messages.info(request,'Seller ID Created')
+                    user = auth.authenticate(username=username,password=password1)
+                    auth.login(request,user)
                     return redirect('sell')
                 elif istype == 'is_college':
                     user = User.objects.create_user(username=username,password=password1,email=email).save()
                     extuser(email=email,is_college=True).save()
-                    messages.info(request,'User Created')
+                    messages.info(request,'College ID Created')
+                    user = auth.authenticate(username=username,password=password1)
+                    auth.login(request,user)
                     return redirect('reg_college')
+                else:
+                    messages.error(request,'Choose one type of account!')
         else:
             messages.info(request,'Password not matched')
-            return redirect('signup')
 
     return render(request,'signup.html',{'title':title})
 
@@ -716,6 +739,8 @@ def profilecollege(request, id):
                 obj.location = request.POST.get('location')
                 obj.save()
                 return redirect(profilecollege, id)
+        else:
+            ownprofile= False
     else:
         obj.count+=1
         obj.save()

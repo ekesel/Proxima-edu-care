@@ -8,12 +8,14 @@
         <div class="right-content">
           <div class="top-content">
             <h6>Rent your Free Space<em> here and Earn some Cash!</em></h6>
-            {% if messages %}
-        {% for message in messages %}
-          <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength:2000});</script>
-        {% endfor %}
-        {% endif %}
           </div>
+          {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}"{% endif %}><h4 style="color:rgb(247, 247, 247); text-align:center;">{{ message }}</h4></li>
+          {% endfor %}
+          {% endif %}
+      </ul>
           <form id="contact" action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}  
             <div class="row">
@@ -39,7 +41,7 @@
               </div>
               <div class="col-md-12">
                 <fieldset>
-                  <input name="charge" type="number" class="form-control" id="number" placeholder="Enter Charge per month">
+                  <input name="charge" type="number" class="form-control" id="number" placeholder="Enter Charge per month" required>
                 </fieldset>
               </div>
               <div class="col-md-12">
@@ -60,11 +62,6 @@
               <div class="col-md-12">
                 <fieldset>
                   <input name="myfile" type="file" class="form-control" id="myfile" required>
-                </fieldset>
-              </div>
-              <div class="col-md-12">
-                <fieldset class="top-content">
-                  <h6>Please send a small introductory video showing your rooms to admin on 7007013502 (WhatsApp, Telegram) for Verification. Video will be added to your profile after verification.</h6>
                 </fieldset>
               </div>
               <div class="col-md-12">
